@@ -21,6 +21,7 @@ int main() {
 
   //octant 1
   draw_line( 0, 0, XRES-1, YRES - 75, s, c);
+  /*
   //octant 2
   draw_line( 0, 0, XRES - 75, YRES-1, s, c); 
   //octant 8
@@ -48,7 +49,7 @@ int main() {
   //horizontal, vertical line
   draw_line( 0, YRES / 2, XRES - 1, YRES / 2, s, c);
   draw_line( XRES / 2, 0, XRES / 2, YRES - 1, s, c);
-  
+  */
   display(s);
   save_extension(s, "lines.png");
 }  
