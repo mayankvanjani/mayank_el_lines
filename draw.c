@@ -9,7 +9,7 @@
 
 //Insert your line algorithm here
 void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
-  int m, A, B, C;
+  int m, A, B, C, d;
   int x = x0;
   int y = y0;
   m = (y1 - y) / (x1 - x);
@@ -24,7 +24,14 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
       A = (y1 - y);
       B = -1 * (x1 - x);
       C = b * (x1 - x);
-      
+      d = (A * x0) + (B * y0) + C;
+      if (d > 0) {
+	y += 1;
+	d += (2 * B);
+      }
+      x += 1;
+      d += (2 * A);
+    }
 
   
   //OCTANT 2;
