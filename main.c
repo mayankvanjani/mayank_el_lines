@@ -18,10 +18,12 @@ int main() {
   
   clear_screen(s);
 
+  //  printf("XRES: %d\nYRES: %d\nXRES - 1: %d\nYRES - 75: %d\n", XRES, YRES, XRES - 1, YRES - 75);
 
   //octant 1
-  draw_line( 0, 0, XRES-1, YRES - 75, s, c);
-  /*
+  draw_line( 0, 0, XRES-1, YRES - 75, s, c);  
+  //  draw_line( XRES-1, YRES - 75, 0, 0, s, c);  
+
   //octant 2
   draw_line( 0, 0, XRES - 75, YRES-1, s, c); 
   //octant 8
@@ -49,7 +51,11 @@ int main() {
   //horizontal, vertical line
   draw_line( 0, YRES / 2, XRES - 1, YRES / 2, s, c);
   draw_line( XRES / 2, 0, XRES / 2, YRES - 1, s, c);
-  */
+
+  draw_coord(s, c);
+  draw_border(s, c);
+
+  save_extension(s, "lines.png");  
   display(s);
-  save_extension(s, "lines.png");
+
 }  
