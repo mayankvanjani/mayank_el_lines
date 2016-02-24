@@ -10,7 +10,7 @@ int main() {
 
   screen s;
   color c;
- 
+  int i, j; 
   
   c.red = 0;
   c.green = MAX_COLOR;
@@ -18,8 +18,7 @@ int main() {
   
   clear_screen(s);
 
-  //  printf("XRES: %d\nYRES: %d\nXRES - 1: %d\nYRES - 75: %d\n", XRES, YRES, XRES - 1, YRES - 75);
-
+  /*
   //octant 1
   draw_line( 0, 0, XRES-1, YRES - 75, s, c);  
   //  draw_line( XRES-1, YRES - 75, 0, 0, s, c);  
@@ -53,6 +52,60 @@ int main() {
   draw_line( XRES / 2, 0, XRES / 2, YRES - 1, s, c);
 
   draw_coord(s, c);
+  draw_border(s, c);
+  */
+  c.red = MAX_COLOR;
+  c.green = 0;
+  c.blue = 0;
+  for ( i = 0; i < XRES; i+=6 ) {
+    draw_line( XRES / 2, YRES / 2, i, 0, s, c );
+    c.red = c.red - 3;
+    c.green = c.green + 3;
+  }
+
+  c.red = 0;
+  c.green = MAX_COLOR;
+  for ( i = 0; i < YRES; i+=6 ) {
+    draw_line( XRES / 2, YRES / 2, YRES, i, s, c );
+    c.green = c.green - 3;
+    c.blue = c.blue + 3;
+  }
+
+  c.green = 0;
+  c.blue = MAX_COLOR;
+  for (i = 0; i < XRES; i+=6 ) {
+    draw_line( XRES / 2, YRES /2, XRES - i, YRES, s, c );
+    c.blue = c.blue - 3;
+    c.green += 3;
+    c.red += 3;
+  }
+
+  c.blue = 0;
+  for (i = 0; i < XRES; i+=6 ) {
+    draw_line( XRES / 2, YRES /2, 0, YRES - i, s, c );
+    c.green -= 3;
+  }
+
+  for ( i = 0; i < XRES; i++ ) {
+    for ( j = 0; j < YRES; j++ ) {
+      if ( i % 100 <= 3 || j % 100 <= 3 ) {
+	c.red = MAX_COLOR;
+	c.green = MAX_COLOR / 2 + 50;
+	c.blue = MAX_COLOR;
+	plot (s, c, i, j);
+      }
+    }
+  }
+
+  for ( i = 0; i < XRES; i+=10 ) {
+    c.red = 0;
+    c.green = 0;
+    c.blue = 0;
+    draw_line( i, 0, 0, i, s, c );
+    draw_line( i, 0, YRES - i, XRES, s, c );
+    draw_line( 0, i, XRES, YRES - i, s, c );
+  }
+
   draw_border(s, c);
 
   save_extension(s, "lines.png");  

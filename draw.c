@@ -10,10 +10,10 @@ void draw_border( screen s, color c ) {
   int i, j;
   for (i = 0; i < 501; i++ ) {
     for (j = 0; j < 501; j++ ) {
-      if ( i >= 495 || j >= 495 || i <= 5 || j <= 5 ) {
+      if ( i >= 490 || j >= 490 || i <= 10 || j <= 10 ) {
 	c.red = 0;
-	c.green = 255;
-	c.blue = 255;
+	c.green = 0;
+	c.blue = 0;
 	plot (s, c, i, j);
       }
     }
